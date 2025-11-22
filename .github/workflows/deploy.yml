@@ -2,7 +2,7 @@ name: Deploy to DigitalOcean Droplet
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
@@ -23,16 +23,30 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      - name: Deploy to Droplet via SSH
+      - name: Copy project to Droplet (rsync)
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: root
+          key: ${{ secrets.DO_SSH_KEY }}
+          source: "."
+          target: "/var/www/nextapp-temp"
+
+      - name: Deploy on Droplet via SSH
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.DO_HOST }}
-          username: ${{ secrets.DO_USER }}
+          username: root
           key: ${{ secrets.DO_SSH_KEY }}
-          port: 22
           script: |
+            # Replace old deployment with new one
+            rm -rf /var/www/nextapp
+            mv /var/www/nextapp-temp /var/www/nextapp
+
             cd /var/www/nextapp
-            git pull origin main
-            npm install
-            npm run build
-            pm2 restart nextapp || pm2 start npm --name "nextapp" -- start
+
+            # Install only production dependencies
+            npm install --production
+
+            # Restart PM2
+            pm2 reload nextapp || pm2 start npm --name "nextapp" -- start
