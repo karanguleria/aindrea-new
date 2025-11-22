@@ -1,0 +1,445 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ChatGPT Light Mode Colors */
+  --background: #ffffff;
+  --muted-background: #ffffff;
+  --foreground: #1a1a1a;
+  --radius: 0.625rem;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #7f00ff;
+  --primary-foreground: #ffffff;
+  --secondary: #f7f7f8;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f7f7f8;
+  --muted-foreground: #6b7280;
+  --accent: #f7f7f8;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --ring: #7f00ff;
+  --chart-1: #7f00ff;
+  --chart-2: #3b82f6;
+  --chart-3: #8b5cf6;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --sidebar: #f7f7f8;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #7f00ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e5e7eb;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #7f00ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-muted-background: var(--muted-background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.dark {
+  /* ChatGPT Dark Mode Colors */
+  --background: #000000;
+  --muted-background: #121212;
+  --foreground: #ececf1;
+  --card: #444654;
+  --card-foreground: #ececf1;
+  --popover: #444654;
+  --popover-foreground: #ececf1;
+  --primary: #7f00ff;
+  --primary-foreground: #ffffff;
+  --secondary: #40414f;
+  --secondary-foreground: #ececf1;
+  --muted: #40414f;
+  --muted-foreground: #8e8ea0;
+  --accent: #40414f;
+  --accent-foreground: #ececf1;
+  --destructive: #ef4444;
+  --border: #565869;
+  --input: #40414f;
+  --ring: #7f00ff;
+  --chart-1: #7f00ff;
+  --chart-2: #3b82f6;
+  --chart-3: #8b5cf6;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --sidebar: #181818;
+  --sidebar-foreground: #ececf1;
+  --sidebar-primary: #7f00ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #40414f;
+  --sidebar-accent-foreground: #ececf1;
+  --sidebar-border: #565869;
+  --sidebar-ring: #7f00ff;
+}
+
+/* Force dark theme for authentication pages */
+body:has([data-auth-page="true"]) {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --radius: 0.625rem;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #7f00ff;
+  --primary-foreground: #ffffff;
+  --secondary: #f7f7f8;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f7f7f8;
+  --muted-foreground: #6b7280;
+  --accent: #f7f7f8;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --ring: #7f00ff;
+  --chart-1: #7f00ff;
+  --chart-2: #3b82f6;
+  --chart-3: #8b5cf6;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --sidebar: #f7f7f8;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #7f00ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e5e7eb;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #7f00ff;
+}
+
+body:has([data-auth-page="true"]) input,
+body:has([data-auth-page="true"]) .bg-transparent {
+  background-color: transparent !important;
+  border-color: var(--border);
+  color: var(--background);
+}
+
+body:has([data-auth-page="true"]) input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Custom Scrollbar Styles */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6b7280 0%, #4b5563 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4b5563 0%, #374151 100%);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 transparent;
+}
+
+.dark * {
+  scrollbar-color: #374151 transparent;
+}
+
+/* Custom scrollbar classes for specific components */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6b7280 0%, #4b5563 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4b5563 0%, #374151 100%);
+  transform: scale(1.05);
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: #374151 transparent;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+}
+
+/* Thin scrollbar for compact areas */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 transparent;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 2px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6b7280 0%, #4b5563 100%);
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4b5563 0%, #374151 100%);
+}
+
+.dark .thin-scrollbar {
+  scrollbar-color: #374151 transparent;
+}
+
+.dark .thin-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+}
+
+.dark .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+}
+
+/* Modern Input Container Styles */
+.modern-input-container {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid rgba(127, 0, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(127, 0, 255, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(127, 0, 255, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.dark .modern-input-container {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  border: 1px solid rgba(127, 0, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(127, 0, 255, 0.2),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(127, 0, 255, 0.1);
+}
+
+.modern-input-container:hover {
+  border-color: rgba(127, 0, 255, 0.3);
+  box-shadow: 0 0 0 1px rgba(127, 0, 255, 0.2),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 25px rgba(127, 0, 255, 0.1);
+}
+
+.modern-icon-button {
+  background: linear-gradient(
+    135deg,
+    rgba(127, 0, 255, 0.1) 0%,
+    rgba(127, 0, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(127, 0, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.modern-icon-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(127, 0, 255, 0.2) 0%,
+    rgba(127, 0, 255, 0.1) 100%
+  );
+  border-color: rgba(127, 0, 255, 0.4);
+  box-shadow: 0 4px 8px rgba(127, 0, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.modern-send-button {
+  background: linear-gradient(135deg, #7f00ff 0%, #6d28d9 100%);
+  border: 2px solid #7f00ff;
+  box-shadow: 0 0 0 1px rgba(127, 0, 255, 0.2),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.modern-send-button:hover:not(:disabled) {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.3),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(139, 92, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+.modern-send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Enhanced Header Styles */
+.header-glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .header-glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-button-hover {
+  transition: all 0.2s ease;
+}
+
+.header-button-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .header-button-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.notification-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Profile Modal Backdrop */
+.profile-modal-backdrop {
+  backdrop-filter: blur(8px);
+}
+
+/* NProgress Custom Styles */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--primary) !important;
+  color: var(--primary) !important;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px var(--primary), 0 0 5px var(--primary);
+  opacity: 1;
+  transform: rotate(3deg) translate(0px, -4px);
+}
