@@ -30,6 +30,7 @@ jobs:
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           port: 22
+          debug: true
           script: |
             cd /var/www/nextapp
             git pull origin main
