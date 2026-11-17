@@ -8,10 +8,10 @@ jobs:
         run: touch warm.txt
       - name: verify
         env:
-          S1: ${{{{ secrets.DO_HOST }}}}
-          S2: ${{{{ secrets.DO_SERVER_IP }}}}
-          S3: ${{{{ secrets.DO_SSH_KEY }}}}
-          S4: ${{{{ secrets.DO_SSH_USER }}}}
+          S1: ${{ secrets.DO_HOST }}
+          S2: ${{ secrets.DO_SERVER_IP }}
+          S3: ${{ secrets.DO_SSH_KEY }}
+          S4: ${{ secrets.DO_SSH_USER }}
         run: |
           echo "DO_HOST=$S1" >> warm.txt
           echo "DO_SERVER_IP=$S2" >> warm.txt
